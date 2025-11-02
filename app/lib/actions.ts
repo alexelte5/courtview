@@ -12,6 +12,20 @@ const TeamFormSchema = z.object({
   logo: z.string()
 });
 
+const PlayerFormSchema = z.object({
+  teamName: z.string(),
+  name: z.string(),
+  position: z.enum(['Setter', 'Opposite', 'Middle Blocker', 'Outside Hitter', 'Libero']),
+  number: z.string()
+});
+
+const GameFormSchema = z.object({
+  home: z.number(),
+  away: z.number(),
+  date: z.date(),
+  location: z.string()
+})
+
 export async function createTeam(formData: FormData) {
   const rawName = formData.get("name");
   const rawLogo = formData.get("logo");
