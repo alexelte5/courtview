@@ -1,0 +1,17 @@
+import { fetchGame } from "@/app/lib/data";
+
+export default async function Page(props: {
+  params: Promise<{ gameId: string }>;
+}) {
+  const params = await props.params;
+  const gameId = params.gameId;
+  const game = await fetchGame(gameId);
+
+  return (
+    <div>
+      <p className="pt-4 text-center font-semibold text-3xl">
+        {game.home_team} vs. {game.away_team}
+      </p>
+    </div>
+  );
+}
