@@ -1,5 +1,6 @@
 import { fetchGame } from "@/lib/data";
 import TeamSelect from "@/components/ui/live/TeamSelect";
+import LiveData from "@/components/LiveData";
 
 interface PageProps {
   params: { gameId: string };
@@ -22,6 +23,7 @@ export default async function Page({ params, searchParams }: PageProps) {
         </div>
       </header>
       <TeamSelect options={[game.home_team, game.away_team]} />
+      <LiveData />
     </div>
   );
 }
