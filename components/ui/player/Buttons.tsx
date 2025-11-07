@@ -1,5 +1,5 @@
-import { deletePlayer } from "@/app/lib/actions";
-import { fetchPlayer } from "@/app/lib/data";
+import { deletePlayer } from "@/lib/actions";
+import { fetchPlayer } from "@/lib/data";
 
 export default async function Buttons({ id }: { id: string }) {
   const player = await fetchPlayer(id);

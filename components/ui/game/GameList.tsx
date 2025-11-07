@@ -7,7 +7,7 @@ export default function GameList(props: { games: Game[] }) {
   return (
     <div className="flex flex-col hover:cursor-pointer">
       {games.map((game) => (
-        <Link href={`/games/${game.id}`}>
+        <Link href={`/games/${game.id}`} key={game.id}>
           {game.home_team} : {game.away_team}
         </Link>
       ))}

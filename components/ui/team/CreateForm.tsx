@@ -1,4 +1,4 @@
-import { createTeam } from "@/app/lib/actions";
+import { createTeam } from "@/lib/actions";
 import Link from "next/link";
 
 export default async function Form() {

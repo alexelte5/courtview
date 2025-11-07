@@ -1,6 +1,6 @@
 "use server";
 
-import CreateForm from "@/app/ui/team/CreateForm";
+import CreateForm from "@/components/ui/team/CreateForm";
 
 const page = () => {
   return (

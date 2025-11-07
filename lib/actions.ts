@@ -24,7 +24,9 @@ const GameFormSchema = z.object({
   away: z.number(),
   date: z.date(),
   location: z.string()
-})
+});
+
+// ZOD nochmal angucken und ordentliche FormSchemas fertig machen -> gerade kb
 
 export async function createTeam(formData: FormData) {
   const rawName = formData.get("name");
@@ -76,8 +78,21 @@ export async function deletePlayer(id: string, teamId: string) {
 }
 
 export async function createGame(formData: FormData) {
-  
-}
+  const rawHome = formData.get("home");
+  const rawAway = formData.get("away");
+  const rawDate = formData.get("date");
+  const rawLocation = formData.get("location");
+
+  const home = typeof rawHome === "string" ? rawHome.trim() : "";
+  const away = typeof rawAway === "string" ? rawAway.trim() : "";
+  const date = typeof rawDate === "string" ? rawDate.trim() : "";
+  const location = typeof rawLocation === "string" ? rawLocation.trim() : "";
+
+  await sql`INSERT INTO game (home_team_id, away_team_id, date, location) VALUES ((SELECT id FROM team WHERE name = ${home}), (SELECT id FROM team WHERE name = ${away}), ${date}, ${location});`
+
+  revalidatePath('/create/game');
+  redirect('/games');
+};
 
 export async function deleteGame(id: string) {
   await sql`DELETE FROM game WHERE id=${id}`;

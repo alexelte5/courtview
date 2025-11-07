@@ -1,4 +1,4 @@
-import { createPlayer } from "@/app/lib/actions";
+import { createPlayer } from "@/lib/actions";
 import Link from "next/link";
 
 export default async function Form(name: { name: string }) {

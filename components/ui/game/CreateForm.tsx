@@ -1,5 +1,5 @@
-import { createGame } from "@/app/lib/actions";
-import { fetchTeams } from "@/app/lib/data";
+import { createGame } from "@/lib/actions";
+import { fetchTeams } from "@/lib/data";
 import Link from "next/link";
 
 export default async function Form() {
@@ -20,10 +20,8 @@ export default async function Form() {
           name="away"
           placeholder="Gastteam auswählen"
         />
-        <input placeholder="Ort" />
-        <input type="datetime-local" />
-
-
+        <input placeholder="Ort" name="location" />
+        <input type="datetime-local" name="date" />
 
         <datalist id="teams">
           {teams.map((team) => (

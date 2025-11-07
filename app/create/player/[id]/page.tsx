@@ -1,7 +1,7 @@
 "use server";
 
-import CreateForm from "@/app/ui/player/CreateForm";
-import { fetchTeam } from "@/app/lib/data";
+import CreateForm from "@/components/ui/player/CreateForm";
+import { fetchTeam } from "@/lib/data";
 
 const page = async (props: { params: Promise<{ id: string }> }) => {
   const params = await props.params;

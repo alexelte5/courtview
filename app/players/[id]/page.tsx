@@ -1,7 +1,7 @@
 "use server";
 
-import { fetchPlayer } from "@/app/lib/data";
-import Buttons from "@/app/ui/player/Buttons"
+import { fetchPlayer } from "@/lib/data";
+import Buttons from "@/components/ui/player/Buttons";
 
 export default async function page({ params }: { params: { id: string } }) {
   const { id } = await params;
@@ -10,7 +10,7 @@ export default async function page({ params }: { params: { id: string } }) {
   return (
     <div className="flex flex-col">
       <p className="pt-4 text-center font-semibold text-3xl">{player.name}</p>
-      <Buttons id={id}/>
+      <Buttons id={id} />
     </div>
   );
 }

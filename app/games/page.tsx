@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { fetchGames } from "@/app/lib/data";
-import GameList from "@/app/ui/game/GameList";
+import { fetchGames } from "@/lib/data";
+import GameList from "@/components/ui/game/GameList";
 
 export default async function Page() {
   const games = await fetchGames();

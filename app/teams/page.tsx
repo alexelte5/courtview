@@ -1,9 +1,9 @@
 "use server";
 
 import type { Team } from "@/types";
-import TeamCard from "@/app/ui/team/TeamCard";
-import CreateButton from "@/app/ui/team/CreateTeam";
-import { fetchTeams } from "@/app/lib/data";
+import TeamCard from "@/components/ui/team/TeamCard";
+import CreateButton from "@/components/ui/team/CreateTeam";
+import { fetchTeams } from "@/lib/data";
 
 export default async function Home() {
   const teams = await fetchTeams();
