@@ -1,16 +1,13 @@
 import { fetchGame } from "@/lib/data";
-import TeamSelect from "@/components/ui/live/TeamSelect";
-import LiveData from "@/components/LiveData";
+import TeamSelectWrapper from "@/components/ui/live/TeamSelectWrapper";
 
 interface PageProps {
   params: { gameId: string };
-  searchParams?: { team?: string };
 }
 
-export default async function Page({ params, searchParams }: PageProps) {
+export default async function Page({ params }: PageProps) {
   const { gameId } = await params;
   const game = await fetchGame(gameId);
-  const team = await searchParams?.team;
 
   return (
     <div className="flex flex-col">
@@ -22,8 +19,12 @@ export default async function Page({ params, searchParams }: PageProps) {
           <p className="text-sm text-gray-500">{game.location}</p>
         </div>
       </header>
-      <TeamSelect options={[game.home_team, game.away_team]} />
-      <LiveData />
+
+      {/* Client Component */}
+      <TeamSelectWrapper
+        options={[game.home_team, game.away_team]}
+        gameId={gameId}
+      />
     </div>
   );
 }

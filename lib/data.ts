@@ -1,6 +1,6 @@
 "use server";
 
-import type { Team, Player, Game } from "@/types"
+import { type Team, type Player, type Game, Rating, Service } from "@/types"
 import postgres from "postgres";
 
 const sql = postgres(process.env.POSTGRES_URL!);
@@ -82,5 +82,22 @@ export async function fetchGame(game_id: string) {
     } catch (error) {
         console.error('Database error: ', error);
         throw new Error('Failed to fetch game');
+    }
+}
+
+export async function fetchRatingsByGameIdAndTeam(game_id: string, team: string) {
+    try {
+        const data = await sql<Rating[]>`SELECT * from rating WHERE game_id = ${team}`;
+        return data;
+    } catch (error) {
+        console.error('Database error: ', error);
+    }
+}
+
+export async function fetchServiceByGameIdAndTeam(game_id: string, team: string) {
+    try {
+        const data = await sql<Service[]>`SELECT `
+    } catch (error) {
+        console.error('Database error: ', error)
     }
 }
